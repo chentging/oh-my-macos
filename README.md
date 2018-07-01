@@ -3,7 +3,21 @@
 
 # 使用Homebrew进行管理的软件
 
+``
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+``
+
+## 国内安装 homebrew 速度过慢的问题
+
+执行上面的语句的时候,可能会遇到 443 的 http 的响应错误. 主要原因是被 GFW  拦截了. 所以在这一步要设置 shell 的翻墙.
+
+可以设置 http 和 https 的代理(或是全部代理):
+
+http_proxy = ""
+https_proxy = ""
+all_proxy = ""
+
+## 修改 install 文件替换国内安装源
 
 ## 设置brew软件的命令目录`/usr/local/bin`
 
@@ -13,7 +27,7 @@ source ~/.bashrc
 
 ```
 
-## 关于源的问题
+## 关于软件(安装)源的问题
 
 ### [使用中科源](brew/brew_ustc.sh)
 
