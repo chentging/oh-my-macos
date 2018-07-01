@@ -3,21 +3,42 @@
 
 # 使用Homebrew进行管理的软件
 
-``
+```sh 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-``
+```
 
 ## 国内安装 homebrew 速度过慢的问题
 
+### 使用代理
+
 执行上面的语句的时候,可能会遇到 443 的 http 的响应错误. 主要原因是被 GFW  拦截了. 所以在这一步要设置 shell 的翻墙.
 
-可以设置 http 和 https 的代理(或是全部代理):
+可以设置 http 和 https 的代理(或是全部代理),前提是你能有 可以使用的 url:
 
-http_proxy = ""
-https_proxy = ""
-all_proxy = ""
+http_proxy="url"
 
-## 修改 install 文件替换国内安装源
+https_proxy="url:port"
+
+all_proxy="url:port"
+
+
+###  修改 install 文件替换国内安装源 
+
+如下面的命令使用了 ustc 的源
+
+```sh 
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+修改的内容如下
+
+```sh
+#BREW_REPO = "https://github.com/Homebrew/brew".freeze
+BREW_REPO = "git://mirrors.ustc.edu.cn/brew.git".freeze
+#CORE_TAP_REPO = "https://github.com/Homebrew/homebrew-core".freeze
+CORE_TAP_REPO = "git://mirrors.ustc.edu.cn/homebrew-core.git".freeze
+```
+
 
 ## 设置brew软件的命令目录`/usr/local/bin`
 
@@ -44,7 +65,7 @@ brew update
 source ~/.bashrc
 ```
 
-可以使用`curl https://raw.githubusercontent.com/rainplus/oh-my-macos/master/brew/brew_ustc.sh|sh` 完成如上的操作
+可以使用`curl [https://raw.githubusercontent.com/rainplus/oh-my-macos/master/brew/brew_ustc.sh](https://raw.githubusercontent.com/rainplus/oh-my-macos/master/brew/brew_ustc.sh)|sh` 完成如上的操作
 
 ### [使用原始源](brew/brew_origin.sh)
 ```sh
@@ -55,7 +76,7 @@ cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url or
 
 ```
 
-可以使用`curl https://raw.githubusercontent.com/rainplus/oh-my-macos/master/brew/brew_originc.sh|sh` 完成如上的操作
+可以使用`curl [https://raw.githubusercontent.com/rainplus/oh-my-macos/master/brew/brew_originc.sh](https://raw.githubusercontent.com/rainplus/oh-my-macos/master/brew/brew_ustc.sh)|sh` 完成如上的操作
 
 ## [命令程序](brew/brew_install.sh)
 
@@ -71,7 +92,7 @@ brew install redis   # nosql数据库 redis
 brew install mongodb # nosql数据库 mongodb
 brew install mysql  # 最新版 mysql 特写版本可以使用 mysql@5.5  mysql@5.6 mysql@5.7
 brew install tmux   # 命令行多窗口工具
-brew install maven  gradle # java 依赖工具
+brw cask install java8 && brew install maven  gradle # java 环境和依赖管理工具 要先安装 
 brew isntall node  # node 环境
 brew install lrzsz # 命令行下的上传下载文件到服务器
 brew install ctags 
@@ -125,7 +146,7 @@ brew cask install slowquitapps
 ```
 
 
-# ZSH设置 一个很好用的 shell 工具
+# ZSH 设置 一个很好用的 shell 工具
 ## 切换zsh替代bash
 ```sh
 #替换默认bash
@@ -134,7 +155,7 @@ chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 ```
-## 我的zsh配置
+## 我的 zsh 配置
 ```sh
 
 # oh-my-zsh 的主目录
@@ -173,7 +194,7 @@ DISABLE_AUTO_UPDATE=true
 ```sh
 git clone --depth=1 https://github.com/powerline/fonts.git && sh font/install.sh
 ```
-然后在iterm2中选中字体
+然后在 iterm2 中选中字体
 # Iterm2配置
 
 ## General
@@ -188,7 +209,7 @@ hide scrollbar
 
 ## Profiles
 
-设置login commands： /usr/bin/login -qbx $(whoami)
+设置 login commands： /usr/bin/login -qbx $(whoami)
 
 ### color
 
@@ -220,7 +241,7 @@ chmod +x term2-send-zmodem.sh iterm2-recv-zmodem.sh
 |rz waiting to receive.\*\*B0100 |Run Silent Coprocess|    /usr/local/bin/iterm2-send-zmodem.sh |   checked|
 |\*\*B00000000000000 |Run Silent Coprocess    |/usr/local/bin/iterm2-recv-zmodem.sh    |checked|
 
-# VIM配置
+# VIM 配置
 ```sh
 # vim的插件管理工具
 git clone --depth=1 https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -297,7 +318,7 @@ filetype plugin indent on
 
 ```
 
-# SublimeText3配置
+# SublimeText3 配置
 
 ## 安装插件
 
@@ -424,7 +445,7 @@ patch:
     Control_R: noop
 
 ```
-# 设置全局gitignore
+# 设置全局 gitignore
 ```
 # ~/.gitignore
 # Folder view configuration files
@@ -456,7 +477,7 @@ idea/c
 *.impl
 
 ```
-## 配置git alias 和log 的输出格式以及密码保存
+## 配置 git alias 和 log 的输出格式以及密码保存
 ``` sh 
 # 配置别名 git 
 git config --global alias.co checkout  
@@ -484,7 +505,7 @@ git config --global core.excludesfile ~/.gitignore_global
 ```
 # Java 不同版本环境的配置
 
-## 配置jenv
+## 配置 jenv
 
 ```sh
 echo 'export PATH="$HOME/.jenv/bin:$PATH"' >> ~/.zshrc
@@ -595,13 +616,13 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)";fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 ```
 
-把brew安装的python也添加到pyenv进行管理
+把 `brew` 安装的 `python` 也添加到 `pyenv` 进行管理
 ```
 ln -s $(brew --cellar python)/* $PYENV_ROOT/versions/
 ```
 ## 修改一个macbook下idea卡顿的问题
 
-在/private/etc/hosts文件中添加
+在 `/private/etc/hosts` 文件中添加
 
 127.0.0.1	[hostname].local 
 
