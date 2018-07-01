@@ -54,9 +54,9 @@ source ~/.bashrc
 
 ```sh
 
-cd "$(brew --repo)" && git remote set-url origin https://mirrors.ustc.edu.cn/brew.git 
+cd "$(brew --repo)" && git remote set-url origin git://mirrors.ustc.edu.cn/brew.git 
 
-cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git 
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url origin git://mirrors.ustc.edu.cn/homebrew-core.git 
 
 echo "export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles" >>$HOME/.bashrc
 
@@ -70,9 +70,9 @@ source ~/.bashrc
 ### [使用原始源](brew/brew_origin.sh)
 ```sh
 
-cd "$(brew --repo)" && git remote set-url origin https://github.com/Homebrew/brew.git
+cd "$(brew --repo)" && git remote set-url origin git://github.com/Homebrew/brew.git
 
-cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url origin https://github.com/Homebrew/homebrew-core.git 
+cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url origin git://github.com/Homebrew/homebrew-core.git 
 
 ```
 
@@ -92,7 +92,10 @@ brew install redis   # nosql数据库 redis
 brew install mongodb # nosql数据库 mongodb
 brew install mysql  # 最新版 mysql 特写版本可以使用 mysql@5.5  mysql@5.6 mysql@5.7
 brew install tmux   # 命令行多窗口工具
-brw cask install java8 && brew install maven  gradle # java 环境和依赖管理工具 要先安装 
+# brew cask install homebrew/cask-versions/java8 安装 java8 的命令更新
+# brew cask install java 最新版的 java
+brw cask install java8 && brew install maven  gradle # java 环境和依赖管理工具 要先安装  
+
 brew isntall node  # node 环境
 brew install lrzsz # 命令行下的上传下载文件到服务器
 brew install ctags 
@@ -150,6 +153,11 @@ brew cask install slowquitapps
 ## 切换zsh替代bash
 ```sh
 #替换默认bash
+# 首先 
+cat /etc/shells #看查 zsh 是否存在
+
+sudo echo $(which zsh) >> /etc/shells # 写入使用的 zsh,如查使用了 brew 安装 最新的 zsh
+
 chsh -s $(which zsh)  
 # 安装oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
