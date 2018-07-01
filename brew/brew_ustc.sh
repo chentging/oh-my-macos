@@ -1,3 +1,5 @@
+#!/bin/sh
+
 cd "$(brew --repo)" 
 git remote set-url origin https://mirrors.ustc.edu.cn/brew.git 
 
@@ -6,5 +8,6 @@ git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
 
 echo "export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles" >>$HOME/.bashrc
 
+source  ~/.bashrc
 
 brew update 

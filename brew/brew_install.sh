@@ -11,3 +11,4 @@ brew install tmux
 brew install maven
 brew isntall node
 
+source ~/.bashrc

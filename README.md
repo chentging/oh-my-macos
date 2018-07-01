@@ -40,7 +40,11 @@ cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url or
 echo "export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles" >>$HOME/.bashrc
 
 brew update 
+
+source ~/.bashrc
 ```
+
+可以使用`curl https://raw.githubusercontent.com/rainplus/oh-my-macos/master/brew/brew_ustc.sh|sh` 完成如上的操作
 
 ### [使用原始源](brew/brew_origin.sh)
 ```sh
@@ -51,29 +55,31 @@ cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" && git remote set-url or
 
 ```
 
+可以使用`curl https://raw.githubusercontent.com/rainplus/oh-my-macos/master/brew/brew_originc.sh|sh` 完成如上的操作
+
 ## [命令程序](brew/brew_install.sh)
 
 ```sh
 
-brew install curl 
-brew install wget
-brew install vim
-brew isntall zsh
-brew install autojump
-brew install git svn
-brew install redis
-brew install mongodb
-brew install mysql
-brew install tmux
-brew install maven
-brew isntall node
-brew install lrzsz
-brew install ctags
+brew install curl  #命令行下载工具
+brew install wget  #命令行下载工具
+brew install vim   # 最新版的VIM
+brew isntall zsh   # 一个超级好用的 shell 
+brew install autojump  # 使用 j 进行目录跳转
+brew install git svn  # 最新代码版本工具
+brew install redis   # nosql数据库 redis
+brew install mongodb # nosql数据库 mongodb
+brew install mysql  # 最新版 mysql 特写版本可以使用 mysql@5.5  mysql@5.6 mysql@5.7
+brew install tmux   # 命令行多窗口工具
+brew install maven  gradle # java 依赖工具
+brew isntall node  # node 环境
+brew install lrzsz # 命令行下的上传下载文件到服务器
+brew install ctags 
 brew isntall jenv # java 版本管理工具
-brew install expect
-brew isntall pyenv
-brew isntall pyenv-vitrualenv
-brew install nmap
+brew install expect # 一个可以减少 ssh 交互的工具
+brew isntall pyenv # python 版本管理
+brew isntall pyenv-vitrualenv # python 环境
+brew install nmap # 安装描扫工具
 
 
 ```
@@ -85,26 +91,25 @@ brew install nmap
 
 #!/bin/sh
 
-brew cask install google-chrome 
-brew cask install qq 
-brew cask install firefox-developer-edition 
-brew cask install neteasemusic
-brew cask install calibre
-brew cask install mysqlworkbench
-brew cask install squirrel
-brew cask install intellij-idea
-brew cask install pycharm
-brew cask install macdown
-brew cask install marp
-brew cask install atom
+brew cask install google-chrome firefox-developer-edition  # 浏览器
+brew cask install qq  ## 聊天工具
+brew cask install neteasemusic # 网易云音乐
+brew cask install calibre # 电子书管理工具
+brew cask install mysqlworkbench # mysql 工具
+brew cask install squirrel # 五笔输入法
+brew cask install intellij-idea # java IDE
+brew cask install pycharm # python IDE
+brew cask install macdown # markdown IDE
+brew cask install marp # markdown ppt IDE
+brew cask install atom  sublime-text # 文本编辑器
 # brew cask install dropbox
-brew cask install cheatsheet
-# brew cask install onepassword
-brew cask install sublime-text
+brew cask install cheatsheet # 快捷键提示器
 
-## 语法插件类
+brew cask install 
 
-brew cask install qlcolorcode
+## 语法插件类 使用默认的mac下的文本编辑器的时候,优化一些代码高亮,视窗压缩工具
+
+brew cask install qlcolorcode 
 brew cask install qlstephen
 brew cask install qlmarkdown
 brew cask install quicklook-json
@@ -114,13 +119,13 @@ brew cask install betterzip
 brew cask install webpquicklook
 brew cask install suspicious-package
 
-# slowquitapps
+# slowquitapps  延迟 cmd+q 退出应用
 brew tap dteoh/sqa
 brew cask install slowquitapps
 ```
 
 
-# ZSH设置
+# ZSH设置 一个很好用的 shell 工具
 ## 切换zsh替代bash
 ```sh
 #替换默认bash
@@ -447,24 +452,27 @@ node_modules
 */targets/
 *.class
 .gitignore
+idea/c
+*.impl
 
 ```
 ## 配置git alias 和log 的输出格式以及密码保存
-```
-git config --global alias.co checkout
+``` sh 
+# 配置别名 git 
+git config --global alias.co checkout  
 git config --global alias.ci commit
 git config --global alias.st status
 git config --global alias.rt remote
 git config --global alias.br branch
 git config --global alias.lg  \"log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative\"
-
 git config --global alias = config  --get-regexp 'alias.*'
 git config --global color.ui true
+# 个人的全局使用 git 用户
 git config --global user.name rainplus
 git config --global user.email rainplus@foxmail.com
-#配置保存密码
-git config --global credential.helper store
-#配置编码
+#配置保存密码--建议使用 git 协议,不需要进行密码保存
+# git config --global credential.helper store
+#配置编码 UTF-8
 git config --global core.quotepath false          # 显示 status 编码
 git config --global gui.encoding utf-8            # 图形界面编码
 git config --global i18n.commit.encoding utf-8    # 提交信息编码
@@ -477,6 +485,7 @@ git config --global core.excludesfile ~/.gitignore_global
 # Java 不同版本环境的配置
 
 ## 配置jenv
+
 ```sh
 echo 'export PATH="$HOME/.jenv/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(jenv init -)"' >> ~/.zshrc
@@ -495,6 +504,11 @@ git clone https://github.com/XX-net/XX-Net.git $HOME/Codes/XX-Net
 echo "alias pc='proxychains4'">>$HOME/.zshrc
 ```
 ## prxoychains4的配置 $HOME/.proxychains/proxychains.conf
+
+```sh
+# 安装 proxychains-ng
+brew install proxychains-ng
+```
 ```
 [ProxyList]
 socks5	127.0.0.1	1080
@@ -514,7 +528,7 @@ socks5	127.0.0.1	1080
   <mirrors>
         <mirror>
             <id>nexus-aliyun</id>
-            <mirrorOf>*</mirrorOf>
+            <mirrorOf>central</mirrorOf>
             <name>Nexus aliyun</name>
             <url>http://maven.aliyun.com/nexus/content/groups/public</url>
         </mirror> 
@@ -524,7 +538,7 @@ socks5	127.0.0.1	1080
 
 ```
 
-## 配置动态切换mirror脚本
+## 配置动态切换mirror脚本 个人公司和aliyun 镜像快速切换
 ```sh
 #!/bin/bash
 PS3='Please enter your choice: '
@@ -549,9 +563,9 @@ do
   esac
 done
 ```
-## python 环境的配置
+## python 环境的配置 看个人喜好
 
-```
+```sh 
 brew install python
 brew install pyenv
 brew instal pyenv-vituralenv
@@ -559,7 +573,7 @@ brew instal pyenv-vituralenv
 
 在$HOME/.zshr中添加如下的内容(顺序一定不能变)：
 
-```
+```sh
 export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 eval "$(jenv init -)"
@@ -570,13 +584,9 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 
 把brew安装的python也添加到pyenv进行管理
 
-```
-brew install python
-brew install pyenv
-brew instal pyenv-vituralenv
-```
-在$HOME/.zshr中添加如下的内容(顺序一定不能变)：
-```
+在 `$HOME/.zshrc` 中添加如下的内容(顺序一定不能变)：
+
+```sh
 export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 eval "$(jenv init -)"
@@ -595,9 +605,9 @@ ln -s $(brew --cellar python)/* $PYENV_ROOT/versions/
 
 127.0.0.1	[hostname].local 
 
-# 配置远离xshell/securecrt
-
-```
+# 配置远离xshell/securecrt 重用 shell 连接
+ 
+``` sh
 cat << EOF > $HOME/.ssh/config
 ControlMaster auto
 ControlPersist yes
@@ -605,13 +615,13 @@ ControlPath ~/.ssh/control:%h:%p:%r
 ServerAliveInterval 30
 EOF
 ```
-
-## ssh登录的问题
+ 
+## ssh登录的问题 个人 sh 工具
 
 前提安装 expect
 expect脚本 参数为 端口 用户 地址 密码
 
-```
+```sh  
 #!/usr/bin/expect
 
 set timeout 30
@@ -626,5 +636,3 @@ interact
 ```
 
 优化本程序的关联
-```
-

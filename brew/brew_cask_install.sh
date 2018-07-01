@@ -29,3 +29,4 @@ brew cask install suspicious-package
 # slowquitapps
 brew tap dteoh/sqa
 brew cask install slowquitapps
+source ~/.bashrc
